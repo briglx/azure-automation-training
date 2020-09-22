@@ -15,7 +15,7 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 #Copy over project files
-COPY *.py .
+COPY *.py ./
 
-#ENTRYPOINT [ "/bin/bash" ]
-ENTRYPOINT ["/usr/local/bin/python", "/app/main.py"]
+ENTRYPOINT [ "/bin/bash" ]
+# ENTRYPOINT ["/usr/local/bin/python", "/app/main.py"]
