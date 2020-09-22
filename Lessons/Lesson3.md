@@ -70,8 +70,7 @@ When you make a change to you code, follow these steps:
     ```bash
     az container create --resource-group $RG_NAME --name $CONTAINER_INSTANCE_NAME --image $ACR_REGISTRY_NAME.azurecr.io/training:v3 --registry-username $SERVICE_PRINCIPAL_ID --registry-password $SERVICE_PRINCIPAL_PASSWORD --restart-policy Never
     
-    # Or use a managed identity
-    
+    # Or use a managed identity    
     az container create --resource-group $RG_NAME --name $CONTAINER_INSTANCE_NAME --image $ACR_REGISTRY_NAME.azurecr.io/training:v3 --assign-identity "/subscriptions/<subscription_id>/resourcegroups/<rg_name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity_id>"  --registry-username $SERVICE_PRINCIPAL_ID --registry-password $SERVICE_PRINCIPAL_PASSWORD --restart-policy Never
     ```
 

@@ -12,6 +12,8 @@ Use Cases
 -	Fetch Azure VM utilization
 -	Etc
 
+## Topics Covered
+
 Section 1 – Data Ingestion
 - Section 1.1 – Setup Development Environment
 - Section 1.2 – Create New Project (Source Control, Python environment)
