@@ -48,19 +48,30 @@ When you make a change to you code, follow these steps:
     docker build --pull --rm -f "dockerfile" -t training:latest "."
     ```
 4. Run Docker Image locally 
-    - Run docker `docker run --rm -d  training:latest`
-    - If you want to see STDOUT use `docker run --rm -a STDOUT training:latest`
-5. Tag for remote registry `docker tag training:latest $ACR_REGISTRY_NAME.azurecr.io/training:v4`
-6. Login to Azure Container Resigtry `az acr login --name $ACR_REGISTRY_NAME`
-7. Push image to the registry `docker push $ACR_REGISTRY_NAME.azurecr.io/training:v4`
+    ```bash
+    docker run --rm -d  training:latest
+
+    #If you want to see STDOUT use 
+    docker run --rm -a STDOUT training:latest
+    ```
+5. Tag for remote registry 
+    ```bash
+    docker tag training:latest $ACR_REGISTRY_NAME.azurecr.io/training:v4
+    ```
+6. Login to Azure Container Resigtry 
+    ```bash
+    az acr login --name $ACR_REGISTRY_NAME
+    ```
+7. Push image to the registry 
+    ```bash 
+    docker push $ACR_REGISTRY_NAME.azurecr.io/training:v4
+    ```
 8. Run the new image on ACI
     ```bash
     az container create --resource-group $RG_NAME --name $CONTAINER_INSTANCE_NAME --image $ACR_REGISTRY_NAME.azurecr.io/training:v3 --registry-username $SERVICE_PRINCIPAL_ID --registry-password $SERVICE_PRINCIPAL_PASSWORD --restart-policy Never
-    ```
-
-    use a managed identity
-
-    ```bash
+    
+    # Or use a managed identity
+    
     az container create --resource-group $RG_NAME --name $CONTAINER_INSTANCE_NAME --image $ACR_REGISTRY_NAME.azurecr.io/training:v3 --assign-identity "/subscriptions/<subscription_id>/resourcegroups/<rg_name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity_id>"  --registry-username $SERVICE_PRINCIPAL_ID --registry-password $SERVICE_PRINCIPAL_PASSWORD --restart-policy Never
     ```
 
